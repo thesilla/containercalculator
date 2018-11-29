@@ -132,7 +132,7 @@ select q.po_no, sum(q.lineweight) as totalweight, sum(q.extendedcost) as totalva
 (select im.item_id, im.item_desc, pol.po_no, im.weight, pol.qty_ordered, (pol.unit_price*pol.qty_ordered) as extendedcost, (im.weight*pol.qty_ordered) as lineweight from po_line pol
 inner join inv_mast im on pol.inv_mast_uid = im.inv_mast_uid
 
-where pol.po_no = '$po1') q group by q.po_no";
+where pol.po_no = '$po1' AND pol.cancel_flag='N') q group by q.po_no";
 
 
                     $stmt1 = $dbc->query($sql1);
@@ -173,7 +173,7 @@ select q.po_no, sum(q.lineweight) as totalweight, sum(q.extendedcost) as totalva
 (select im.item_id, im.item_desc, pol.po_no, im.weight, pol.qty_ordered, (pol.unit_price*pol.qty_ordered) as extendedcost, (im.weight*pol.qty_ordered) as lineweight from po_line pol
 inner join inv_mast im on pol.inv_mast_uid = im.inv_mast_uid
 
-where pol.po_no = '$po2') q group by q.po_no";
+where pol.po_no = '$po2' AND pol.cancel_flag='N') q group by q.po_no";
 
                     $stmt2 = $dbc->query($sql2);
 
@@ -207,7 +207,7 @@ select q.po_no, sum(q.lineweight) as totalweight, sum(q.extendedcost) as totalva
 (select im.item_id, im.item_desc, pol.po_no, im.weight, pol.qty_ordered, (pol.unit_price*pol.qty_ordered) as extendedcost, (im.weight*pol.qty_ordered) as lineweight from po_line pol
 inner join inv_mast im on pol.inv_mast_uid = im.inv_mast_uid
 
-where pol.po_no = '$po3') q group by q.po_no";
+where pol.po_no = '$po3' AND pol.cancel_flag='N') q group by q.po_no";
 
 
                     $stmt3 = $dbc->query($sql3);
@@ -241,7 +241,7 @@ select q.po_no, sum(q.lineweight) as totalweight, sum(q.extendedcost) as totalva
 (select im.item_id, im.item_desc, pol.po_no, im.weight, pol.qty_ordered, (pol.unit_price*pol.qty_ordered) as extendedcost, (im.weight*pol.qty_ordered) as lineweight from po_line pol
 inner join inv_mast im on pol.inv_mast_uid = im.inv_mast_uid
 
-where pol.po_no = '$po4') q group by q.po_no";
+where pol.po_no = '$po4' AND pol.cancel_flag='N') q group by q.po_no";
 
                     $stmt4 = $dbc->query($sql4);
 
@@ -274,7 +274,7 @@ select q.po_no, sum(q.lineweight) as totalweight, sum(q.extendedcost) as totalva
 (select im.item_id, im.item_desc, pol.po_no, im.weight, pol.qty_ordered, (pol.unit_price*pol.qty_ordered) as extendedcost, (im.weight*pol.qty_ordered) as lineweight from po_line pol
 inner join inv_mast im on pol.inv_mast_uid = im.inv_mast_uid
 
-where pol.po_no = '$po5') q group by q.po_no";
+where pol.po_no = '$po5' AND pol.cancel_flag='N') q group by q.po_no";
 
                     $stmt5 = $dbc->query($sql5);
 
@@ -315,7 +315,7 @@ where pol.po_no = '$po5') q group by q.po_no";
                     $miscMultiplier = 0.00;
                 }
 
-
+                // SHOW RESULTS/MULTIPLIERS
 
                 print "<div id ='results'>";
                 print "<table id = 'resultsTable'>";
